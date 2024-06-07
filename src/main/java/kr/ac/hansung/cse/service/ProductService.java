@@ -11,7 +11,7 @@ public interface ProductService {
      * Gets all products present in the system.
      * The result is paginated.
      *
-     * @param page" the page to fetch results from
+     //* @param page" the page to fetch results from
      * @return list of products
      */
     List<Product> getAllProducts();

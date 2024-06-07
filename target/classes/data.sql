@@ -1,4 +1,28 @@
 -- Categories
+DROP TABLE IF EXISTS app_product_category;
+DROP TABLE IF EXISTS app_product;
+DROP TABLE IF EXISTS app_category;
+
+CREATE TABLE IF NOT EXISTS app_category (
+                                            id INT PRIMARY KEY,
+                                            name VARCHAR(255) NOT NULL,
+    parentid INT
+    );
+
+CREATE TABLE IF NOT EXISTS app_product (
+                                           id INT PRIMARY KEY,
+                                           name VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL
+    );
+
+CREATE TABLE IF NOT EXISTS app_product_category (
+                                                    productid INT,
+                                                    categoryid INT,
+                                                    PRIMARY KEY (productid, categoryid),
+    FOREIGN KEY (productid) REFERENCES app_product(id),
+    FOREIGN KEY (categoryid) REFERENCES app_category(id)
+    );
+
 insert into app_category (id, name, parentid) values (1, 'Electronics', null);
 insert into app_category (id, name, parentid) values (2, 'Clothing, Shoes & Accessories', null);
 insert into app_category (id, name, parentid) values (3, 'Home & Outdoor', null);
